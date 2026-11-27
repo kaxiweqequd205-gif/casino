@@ -30,23 +30,35 @@ svg{width:16px;height:16px;fill:none;stroke:currentcolor;stroke-width:1.7;stroke
 .body{flex:1;display:flex;min-height:0}
 
 /* ---------- сайдбар ---------- */
-.side{width:236px;flex:0 0 236px;margin:10px 0 10px 10px;background:#141414;border-radius:12px;padding:12px 10px;display:flex;flex-direction:column;gap:1px;overflow:hidden}
+.side{position:sticky;top:10px;align-self:flex-start;width:236px;flex:0 0 236px;margin:10px 0 10px 10px;background:#141414;border-radius:12px;padding:12px 10px;display:flex;flex-direction:column;gap:1px}
 .acc{display:flex;align-items:center;gap:9px;padding:8px 8px 12px;border-bottom:1px solid #1E1E1E;margin-bottom:6px}
 .acc b{display:block;font:700 11.5px Inter}
 .acc small{font-size:9px;color:#6B6B6B}
-.nav{display:flex;align-items:center;gap:10px;padding:7px 9px;border-radius:8px;color:#BDBDBD;font:500 12px Inter;text-decoration:none;cursor:pointer}
-.nav svg{width:14px;height:14px;flex:0 0 14px;color:#7A7A7A}
+.nav{display:flex;align-items:center;gap:10px;padding:7px 9px;border-radius:8px;color:#BDBDBD;font:500 13px Inter;text-decoration:none;cursor:pointer}
+.nav svg{width:17px;height:17px;flex:0 0 17px;color:#7A7A7A}
 .nav:hover{background:#1D1D1D;color:#fff}
 .badge{margin-left:auto;background:#FF7A18;color:#160800;font:800 9px Inter;padding:2px 6px;border-radius:99px}
 .sub{display:flex;flex-direction:column;padding:2px 0 6px 38px}
 .sub a{font:400 11.5px Inter;color:#8A8A8A;padding:4px 0;cursor:pointer}
-.side-foot{margin-top:auto;padding-top:9px;border-top:1px solid #1E1E1E}
+.side-foot{margin-top:14px;padding-top:9px;border-top:1px solid #1E1E1E}
 .app{display:flex;align-items:center;gap:8px;background:#1D1D1D;border-radius:9px;padding:8px 9px}
 .app-ic{width:22px;height:22px;border-radius:6px;background:#2F6BFF;display:grid;place-items:center;font-size:11px}
 .app b{display:block;font:600 10.5px Inter}
 .app small{font-size:8.5px;color:#7A7A7A}
 .soc{display:flex;gap:6px;padding:8px 2px 0}
 .soc span{width:26px;height:26px;border-radius:99px;background:#1D1D1D;display:grid;place-items:center;font-size:10px;color:#BDBDBD}
+
+/* ---------- сворачивание сайдбара ---------- */
+.sbhead{display:flex;justify-content:flex-end;padding:0 2px 6px}
+.sbtoggle{width:26px;height:26px;border-radius:7px;background:#1D1D1D;border:0;color:#BDBDBD;display:grid;place-items:center;cursor:pointer}
+.sbtoggle svg{width:14px;height:14px;stroke-width:2.4}
+.frame.mini .side{width:64px;flex:0 0 64px;padding:12px 8px}
+.frame.mini .sbhead{justify-content:center}
+.frame.mini .sbtoggle svg{transform:rotate(180deg)}
+.frame.mini .acc{justify-content:center;padding:4px 0 12px}
+.frame.mini .acc div,.frame.mini .sub,.frame.mini .side-foot{display:none}
+.frame.mini .nav{position:relative;justify-content:center;padding:9px 0;font-size:0;gap:0}
+.frame.mini .badge{position:absolute;margin:0;transform:translate(14px,-10px);font-size:8px}
 
 /* ---------- контент ---------- */
 .main{flex:1;min-width:0;padding:10px 14px 20px;display:flex;flex-direction:column;gap:8px;overflow:hidden}
@@ -61,7 +73,8 @@ svg{width:16px;height:16px;fill:none;stroke:currentcolor;stroke-width:1.7;stroke
 .dot{width:6px;height:6px;border-radius:99px;background:rgba(255,255,255,.45);border:0;padding:0;cursor:pointer}
 .dot.on{background:#fff;width:16px}
 .hnav{position:absolute;right:9px;bottom:7px;display:flex;gap:5px;z-index:3}
-.hbtn{width:24px;height:24px;border-radius:99px;border:0;background:rgba(0,0,0,.4);color:#fff;font-size:13px;cursor:pointer;line-height:1}
+.hbtn{width:26px;height:26px;border-radius:99px;border:0;background:rgba(0,0,0,.45);color:#fff;cursor:pointer;display:grid;place-items:center}
+.hbtn svg{width:14px;height:14px;stroke-width:2.4}
 
 /* ---------- промо справа ---------- */
 .rail-top{width:296px;flex:0 0 296px;display:flex;flex-direction:column;gap:12px}
@@ -96,19 +109,20 @@ svg{width:16px;height:16px;fill:none;stroke:currentcolor;stroke-width:1.7;stroke
 .sechead h2{font:700 16px Inter;display:flex;align-items:center;gap:8px}
 .sechead h2 svg{width:17px;height:17px;color:#BDBDBD;flex:0 0 17px}
 .arrows{display:flex;gap:5px;align-items:center}
-.arrows button{width:24px;height:24px;border-radius:99px;background:#1A1A1A;border:0;color:#C9C9C9;font-size:13px;cursor:pointer;line-height:1}
+.arrows button{width:26px;height:26px;border-radius:99px;background:#1A1A1A;border:0;color:#C9C9C9;cursor:pointer;display:grid;place-items:center}
+.arrows button svg{width:14px;height:14px;stroke-width:2.4}
 .all{font:600 11px Inter;color:#C9C9C9;background:#1A1A1A;border-radius:7px;padding:4px 10px;cursor:pointer;margin-right:4px}
 
 /* ---------- сетка игр ---------- */
 .grid{display:grid;grid-template-columns:repeat(9,1fr);gap:8px}
-.tile{cursor:pointer;border-radius:9px;overflow:hidden;background:#171717}
-.art{aspect-ratio:3/3.4;overflow:hidden}
+.tile{cursor:pointer;border-radius:9px;background:transparent}
+.art{aspect-ratio:3/4;overflow:hidden;border-radius:9px;background:#171717}
 .art img{width:100%;height:100%;object-fit:cover;transition:transform .3s}
 .tile:hover .art img{transform:scale(1.05)}
 .tmeta{display:flex;align-items:center;gap:4px;font:500 8.5px Inter;color:#9A9A9A;padding:4px 0 2px}
-.tmeta i{width:4px;height:4px;border-radius:99px;background:#16C05C}
+.tmeta i{width:5px;height:5px;border-radius:99px;background:#16C05C;animation:pl 1.4s infinite}
 
-/* ---------- турниры ---------- */
+/* ---------- промоушен ---------- */
 .trn{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
 .tcard{position:relative;height:132px;border-radius:12px;overflow:hidden;background:#161616;cursor:pointer;padding:13px 15px;display:flex;flex-direction:column;text-decoration:none;color:inherit}
 .tc-art{position:absolute;right:0;top:0;height:100%;width:52%;object-fit:cover;opacity:.85;-webkit-mask-image:linear-gradient(90deg,transparent,#000 42%);mask-image:linear-gradient(90deg,transparent,#000 42%)}
@@ -118,4 +132,3 @@ svg{width:16px;height:16px;fill:none;stroke:currentcolor;stroke-width:1.7;stroke
 .tc-v{position:relative;z-index:2;font:800 24px/1.1 Inter;letter-spacing:-.03em;margin:2px 0 8px}
 .tc-f{position:relative;z-index:2;font:400 8.5px Inter;color:#7E7E7E}
 .tc-cd{position:relative;z-index:2;font:700 11px Inter;color:#C9C9C9;letter-spacing:.14em}
-.tc-btn{position:absolute;z-index:3;right:12px;bottom:12px;background:#242424;color:#fff;font:600 10.5px Inter;padding:7px 13px;border-radius:8px}
