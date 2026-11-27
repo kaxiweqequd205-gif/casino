@@ -4,217 +4,112 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Casino</title>
-<style>
-@import url('https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,400;0,500;0,600;0,700;0,800;1,900&display=swap');
-*{box-sizing:border-box;margin:0;padding:0}
-body{background:#0C0C0C;font-family:Inter,system-ui,sans-serif;-webkit-font-smoothing:antialiased;color:#fff}
-.frame{width:100%;min-height:100vh;display:flex;flex-direction:column;overflow:hidden;max-width:1600px;margin:0 auto}
-svg{width:16px;height:16px;fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
-.chev{width:14px;height:14px;color:#6B6B6B}
-.top{height:64px;flex:0 0 64px;display:flex;align-items:center;gap:14px;padding:0 20px 0 24px;border-bottom:1px solid #1A1A1A}
-.logo{display:flex;align-items:center;gap:9px}
-.m7{font:900 26px/1 Inter;letter-spacing:-.15em;transform:skewX(-9deg)}
-.m7 em{font-style:normal;color:#2F6BFF}
-.wm{font:900 19px/1 Inter;font-style:italic;letter-spacing:-.03em}
-.pills{display:flex;gap:6px;margin-left:6px}
-.pill{display:flex;align-items:center;gap:7px;font:600 12.5px Inter;color:#C9C9C9;background:#1A1A1A;border-radius:99px;padding:9px 16px;text-decoration:none}
-.pill.on{background:#2F6BFF;color:#fff}
-.pill svg{width:15px;height:15px}
-.topr{margin-left:auto;display:flex;align-items:center;gap:11px}
-.cur{font:600 9px Inter;letter-spacing:.14em;color:#7E7E7E}
-.bal{font:700 13px Inter}
-.btn-g{background:#16C05C;color:#04180C;border:0;border-radius:99px;font:700 12.5px Inter;padding:10px 20px;cursor:pointer}
-.ic{width:36px;height:36px;border-radius:99px;background:#1A1A1A;border:0;color:#C9C9C9;display:grid;place-items:center;cursor:pointer}
-.ava{width:32px;height:32px;border-radius:99px;background:#2F6BFF;display:grid;place-items:center;font:700 12px Inter}
-.ava.lg{width:38px;height:38px;flex:0 0 38px;font-size:14px}
-.body{flex:1;display:flex;min-height:0}
-.side{width:236px;flex:0 0 236px;margin:10px 0 10px 10px;background:#141414;border-radius:12px;padding:12px 10px;display:flex;flex-direction:column;gap:1px;overflow:hidden}
-.acc{display:flex;align-items:center;gap:9px;padding:8px 8px 12px;border-bottom:1px solid #1E1E1E;margin-bottom:6px}
-.acc b{display:block;font:700 11.5px Inter}
-.acc small{font-size:9px;color:#6B6B6B}
-.acc .chev{margin-left:auto}
-.nav{display:flex;align-items:center;gap:10px;padding:7px 9px;border-radius:8px;color:#BDBDBD;font:500 12px Inter;text-decoration:none;cursor:pointer}
-.nav svg:first-child{color:#7A7A7A}
-.nav:hover{background:#1D1D1D;color:#fff}
-.nav .chev{margin-left:auto}
-.badge{margin-left:auto;background:#FF7A18;color:#160800;font:800 9px Inter;padding:2px 6px;border-radius:99px}
-.sub{display:flex;flex-direction:column;padding:2px 0 6px 38px}
-.sub a{font:400 11.5px Inter;color:#8A8A8A;padding:4px 0;cursor:pointer}
-.side-foot{margin-top:auto;padding-top:9px;border-top:1px solid #1E1E1E}
-.app{display:flex;align-items:center;gap:8px;background:#1D1D1D;border-radius:9px;padding:8px 9px}
-.app-ic{width:22px;height:22px;border-radius:6px;background:#2F6BFF;display:grid;place-items:center;font-size:11px}
-.app b{display:block;font:600 10.5px Inter}
-.app small{font-size:8.5px;color:#7A7A7A}
-.app .chev{margin-left:auto}
-.soc{display:flex;gap:6px;padding:8px 2px 0}
-.soc span{width:26px;height:26px;border-radius:99px;background:#1D1D1D;display:grid;place-items:center;font-size:10px;color:#BDBDBD}
-.main{flex:1;min-width:0;padding:10px 14px 20px;display:flex;flex-direction:column;gap:8px;overflow:hidden}
-.row1{display:flex;gap:12px}
-.hero{position:relative;flex:1;aspect-ratio:5/2;border-radius:14px;overflow:hidden;background:#101820}
-.slides{position:absolute;inset:0}
-.slide{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity .45s}
-.slide.on{opacity:1}
-.dots{position:absolute;left:50%;bottom:9px;transform:translateX(-50%);display:flex;gap:5px;z-index:3}
-.dot{width:6px;height:6px;border-radius:99px;background:rgba(255,255,255,.45);border:0;padding:0;cursor:pointer}
-.dot.on{background:#fff;width:16px}
-.hnav{position:absolute;right:9px;bottom:7px;display:flex;gap:5px;z-index:3}
-.hbtn{width:24px;height:24px;border-radius:99px;border:0;background:rgba(0,0,0,.4);color:#fff;font-size:13px;cursor:pointer;line-height:1}
-.rail-top{width:296px;flex:0 0 296px;display:flex;flex-direction:column;gap:12px}
-.promo{position:relative;flex:1;border-radius:14px;overflow:hidden;text-decoration:none;color:inherit;display:block}
-.promo img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
-.psc{position:absolute;inset:0;background:linear-gradient(180deg,rgba(180,154,120,.95) 0%,rgba(180,154,120,.55) 42%,rgba(180,154,120,0) 62%)}
-.psc.d{background:linear-gradient(180deg,rgba(16,16,16,.96) 0%,rgba(16,16,16,.6) 44%,rgba(16,16,16,0) 64%)}
-.ptxt{position:absolute;left:15px;top:13px;right:15px;display:flex;flex-direction:column;gap:4px}
-.ptxt b{font:700 16px/1.1 Inter;letter-spacing:-.02em;color:#191208}
-.promo.dark .ptxt b{color:#fff}
-.ptxt small{font:500 10.5px/1.3 Inter;color:rgba(25,18,8,.78);max-width:170px}
-.promo.dark .ptxt small{color:#A8A8A8;display:flex;align-items:center;gap:5px}
-.ptxt small i{width:5px;height:5px;border-radius:99px;background:#8A8A8A}
-.searchrow{display:flex;gap:8px}
-.srch{flex:1;height:34px;display:flex;align-items:center;gap:8px;padding:0 13px;border-radius:9px;background:#171717;color:#7E7E7E;font:400 12px Inter}
-.srch svg{width:14px;height:14px}
-.prov-btn{width:296px;flex:0 0 296px;height:34px;display:flex;align-items:center;justify-content:center;gap:8px;border-radius:9px;background:#171717;border:0;color:#C9C9C9;font:600 12px Inter;cursor:pointer}
-.prov-btn svg{width:13px;height:13px}
-.chips{display:flex;gap:7px;align-items:center}
-.chip{display:flex;align-items:center;gap:7px;height:34px;padding:0 14px;border-radius:9px;background:#1A1A1A;color:#C9C9C9;font:600 12px Inter;text-decoration:none;cursor:pointer;white-space:nowrap}
-.chip svg{width:14px;height:14px;color:#8A8A8A}
-.chip.on{background:#2F6BFF;color:#fff}
-.chip.on svg{color:#fff}
-.chip.arrow{margin-left:auto;padding:0;width:34px;justify-content:center;background:transparent}
-.sechead{display:flex;align-items:center;justify-content:space-between}
-.sechead h2{font:700 16px Inter;display:flex;align-items:center;gap:7px}
-.sechead h2::before{content:"♛";color:#E0B33C;font-size:13px}
-.sechead h2.plain::before{display:none}
-.all{font:600 11px Inter;color:#C9C9C9;background:#1A1A1A;border-radius:7px;padding:4px 10px;cursor:pointer;margin-right:4px}
-.arrows{display:flex;gap:5px;align-items:center}
-.arrows button{width:24px;height:24px;border-radius:99px;background:#1A1A1A;border:0;color:#C9C9C9;font-size:13px;cursor:pointer;line-height:1}
-.grid{display:grid;grid-template-columns:repeat(9,1fr);gap:8px}
-.tile{cursor:pointer;border-radius:9px;overflow:hidden;background:#171717}
-.art{aspect-ratio:3/3.4;overflow:hidden}
-.art img{width:100%;height:100%;object-fit:cover;transition:transform .3s}
-.tile:hover .art img{transform:scale(1.05)}
-.tmeta{display:flex;align-items:center;gap:4px;font:500 8.5px Inter;color:#9A9A9A;padding:4px 0 2px}
-.tmeta i{width:4px;height:4px;border-radius:99px;background:#16C05C}
-.trn{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
-.tcard{position:relative;height:132px;border-radius:12px;overflow:hidden;background:#161616;cursor:pointer;padding:13px 15px;display:flex;flex-direction:column;text-decoration:none;color:inherit}
-.tc-art{position:absolute;right:0;top:0;height:100%;width:52%;object-fit:cover;opacity:.85;-webkit-mask-image:linear-gradient(90deg,transparent,#000 42%);mask-image:linear-gradient(90deg,transparent,#000 42%)}
-.tcard::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(22,22,22,.97) 26%,rgba(22,22,22,.6) 52%,rgba(22,22,22,.15) 78%)}
-.tc-badge{position:relative;z-index:2;align-self:flex-start;background:#16C05C;color:#04180C;font:700 9px Inter;padding:3px 8px;border-radius:6px;margin-bottom:auto}
-.tc-t{position:relative;z-index:2;font:500 11.5px Inter;color:#B9B9B9;margin-top:10px}
-.tc-v{position:relative;z-index:2;font:800 24px/1.1 Inter;letter-spacing:-.03em;margin:2px 0 8px}
-.tc-f{position:relative;z-index:2;font:400 8.5px Inter;color:#7E7E7E}
-.tc-cd{position:relative;z-index:2;font:700 11px Inter;color:#C9C9C9;letter-spacing:.14em}
-.tc-btn{position:absolute;z-index:3;right:12px;bottom:12px;background:#242424;color:#fff;font:600 10.5px Inter;padding:7px 13px;border-radius:8px}
-</style>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,400;0,500;0,600;0,700;0,800;1,900&display=swap">
+<link rel="stylesheet" href="css/style.css">
 </head>
 <body>
 <div class="frame">
+
   <header class="top">
     <div class="logo"><span class="m7">7<em>7</em>7</span><span class="wm">CASINO</span></div>
-    <nav class="pills">
-      <a class="pill on">Home</a><a class="pill">Casino</a><a class="pill">Free money</a><a class="pill">Sport</a>
-    </nav>
-    <div class="topr">
-      <span class="cur">USD</span><span class="bal">0.00</span>
-      <button class="btn-g">Deposit</button>
-      <button class="ic">🔔</button><span class="ava">M</span>
-    </div>
+    <nav class="pills"><a class="pill on">Home</a><a class="pill">Casino</a><a class="pill">Free money</a><a class="pill">Sport</a></nav>
+    <div class="topr"><span class="cur">USD</span><span class="bal">0.00</span><button class="btn-g">Deposit</button><button class="ic">&#128276;</button><span class="ava">M</span></div>
   </header>
+
   <div class="body">
+
     <aside class="side">
       <div class="acc"><span class="ava lg">M</span><div><b>MFXPFBADTRZ</b><small>ID 392144308</small></div></div>
-      <a class="nav">Casino</a>
+      <a class="nav"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="3.2"/></svg>Casino</a>
       <div class="sub"><a>Lobby</a><a>Fast games</a><a>Originals</a></div>
-      <a class="nav">Sports</a>
-      <a class="nav">Deposits &amp; withdrawals</a>
-      <a class="nav">Profile</a>
-      <a class="nav">Bonus<span class="badge">1</span></a>
-      <a class="nav">Promotions</a>
-      <a class="nav">Premium club</a>
-      <a class="nav">Premium loyalty program</a>
-      <a class="nav">Partners</a>
-      <a class="nav">License</a>
-      <a class="nav">About us</a>
-      <a class="nav">Feedback</a>
+      <a class="nav"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5"/><path d="M7.5 7.5c3 1.6 6 4.6 7.5 7.5M12 3.5v17M3.5 12h17"/></svg>Sports</a>
+      <a class="nav"><svg viewBox="0 0 24 24"><rect x="3" y="6" width="18" height="12" rx="2.5"/><path d="M3 10h18"/></svg>Deposits &amp; withdrawals</a>
+      <a class="nav"><svg viewBox="0 0 24 24"><circle cx="12" cy="8.5" r="3.6"/><path d="M5 20c.9-3.6 3.6-5.4 7-5.4s6.1 1.8 7 5.4"/></svg>Profile</a>
+      <a class="nav"><svg viewBox="0 0 24 24"><rect x="3.5" y="8.5" width="17" height="11" rx="2"/><path d="M3.5 12.5h17M12 8.5v11M8.5 8.5C8.5 6 10 4.5 12 4.5s3.5 1.5 3.5 4"/></svg>Bonus<span class="badge">1</span></a>
+      <a class="nav"><svg viewBox="0 0 24 24"><path d="M20 12.8V5.5a1.5 1.5 0 0 0-1.5-1.5h-7.3a2 2 0 0 0-1.4.6l-6 6a2 2 0 0 0 0 2.8l5.3 5.3a2 2 0 0 0 2.8 0l6-6a2 2 0 0 0 .6-1.4z"/><circle cx="16" cy="8" r="1.4"/></svg>Promotions</a>
+      <a class="nav"><svg viewBox="0 0 24 24"><path d="M3.5 8l3.4 2.6L12 4.5l5.1 6.1L20.5 8l-1.7 9.5H5.2z"/></svg>Premium club</a>
+      <a class="nav"><svg viewBox="0 0 24 24"><circle cx="12" cy="9.5" r="5"/><path d="M9 13.8 8 20l4-2.2L16 20l-1-6.2"/></svg>Premium loyalty program</a>
+      <a class="nav"><svg viewBox="0 0 24 24"><circle cx="9" cy="9" r="3.2"/><path d="M3 19c.7-3 3-4.6 6-4.6s5.3 1.6 6 4.6"/><path d="M16 5.6a3.2 3.2 0 0 1 0 6.6M18 19c-.2-1.6-.7-2.9-1.5-3.9"/></svg>Partners</a>
+      <a class="nav"><svg viewBox="0 0 24 24"><path d="M12 3.2 19.5 6v6.2c0 4.3-3.1 7.4-7.5 8.6-4.4-1.2-7.5-4.3-7.5-8.6V6z"/><path d="M9 12l2.2 2.2L15.5 10"/></svg>License</a>
+      <a class="nav"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.8"/><path d="M12 11v5.5"/><circle cx="12" cy="7.8" r="1"/></svg>About us</a>
+      <a class="nav"><svg viewBox="0 0 24 24"><path d="M20.5 12.4a8.5 8.5 0 0 1-12.2 7.6L4 21l1-4.2A8.5 8.5 0 1 1 20.5 12.4z"/><path d="M8.8 11h6.4M8.8 14.4h4"/></svg>Feedback</a>
       <div class="side-foot">
-        <div class="app"><span class="app-ic">◲</span><div><b>Casino app</b><small>Fast access</small></div></div>
-        <div class="soc"><span>✈</span><span>◎</span><span>▶</span><span>✉</span></div>
+        <div class="app"><span class="app-ic">&#9634;</span><div><b>Casino app</b><small>Fast access</small></div></div>
+        <div class="soc"><span>&#9992;</span><span>&#9673;</span><span>&#9654;</span><span>&#9993;</span></div>
       </div>
     </aside>
+
     <main class="main">
+
+      <!-- баннер -->
       <div class="row1">
         <section class="hero">
           <div class="slides">
-            <img class="slide on" src="VeniceAI_Ni43DTPZbMUTdQ_0.png">
-            <img class="slide" src="VeniceAI_9puTV3HK7iDevS_2.png">
-            <img class="slide" src="VeniceAI_9puTV3HK7iDevS_1.png">
+            <img class="slide on" src="img/hero-1.png" alt="">
+            <img class="slide" src="img/hero-2.png" alt="">
+            <img class="slide" src="img/hero-3.png" alt="">
           </div>
           <div class="dots"><button class="dot on"></button><button class="dot"></button><button class="dot"></button></div>
-          <div class="hnav"><button class="hbtn prev">‹</button><button class="hbtn next">›</button></div>
+          <div class="hnav"><button class="hbtn prev">&#8249;</button><button class="hbtn next">&#8250;</button></div>
         </section>
         <aside class="rail-top">
-          <a class="promo tan"><img src="VeniceAI_HdV87In42-wAip_0.png"><span class="psc"></span><span class="ptxt"><b>Free money</b><small>Range Rover and other prizes</small></span></a>
-          <a class="promo dark"><img src="VeniceAI_HdV87In42-wAip_1.png"><span class="psc d"></span><span class="ptxt"><b>Bonuses</b><small><i></i>1 available bonus</small></span></a>
+          <a class="promo tan"><img src="img/promo-car.png" alt=""><span class="psc"></span><span class="ptxt"><b>Free money</b><small>Range Rover and other prizes</small></span></a>
+          <a class="promo dark"><img src="img/promo-gift.png" alt=""><span class="psc d"></span><span class="ptxt"><b>Bonuses</b><small><i></i>1 available bonus</small></span></a>
         </aside>
       </div>
+
+      <!-- поиск -->
       <div class="searchrow"><div class="srch">Search</div><button class="prov-btn">Providers</button></div>
+
+      <!-- категории -->
       <section class="chips">
-        <a class="chip on">Lobby</a><a class="chip">Fast</a><a class="chip">AI picks</a><a class="chip">Popular</a>
-        <a class="chip">Grand Hustle</a><a class="chip">Slots</a><a class="chip">Bonus buy</a><a class="chip">New</a>
-        <a class="chip arrow">›</a>
+        <a class="chip on"><svg viewBox="0 0 24 24" stroke-width="1.6"><path d="M4 20h16"/><path d="M5.6 20V11a6.4 6.4 0 0 1 12.8 0v9"/><path d="M10 20v-5.6a2 2 0 0 1 4 0V20"/></svg>Lobby</a>
+        <a class="chip"><svg viewBox="0 0 24 24"><path fill="currentColor" stroke="none" d="M13.6 2.5 6.2 13.1h4.3L9.3 21.5l7.5-10.7h-4.5z"/></svg>Quick games</a>
+        <a class="chip"><svg viewBox="0 0 24 24"><path fill="currentColor" stroke="none" d="M12 2.8c3.7 3.5 5.7 6.2 5.7 9a5.7 5.7 0 0 1-11.4 0c0-2.8 2-5.5 5.7-9z"/></svg>Popular</a>
+        <a class="chip"><svg viewBox="0 0 24 24"><path fill="currentColor" stroke="none" d="M10.6 3.2 12.3 7.6 16.7 9.3 12.3 11 10.6 15.4 8.9 11 4.5 9.3 8.9 7.6z"/><path fill="currentColor" stroke="none" d="M17.6 14.2l.9 2.1 2.1.9-2.1.9-.9 2.1-.9-2.1-2.1-.9 2.1-.9z"/><path fill="currentColor" stroke="none" d="M5.4 14.6l.6 1.4 1.4.6-1.4.6-.6 1.4-.6-1.4-1.4-.6 1.4-.6z"/></svg>AI recommendations</a>
+        <a class="chip"><svg viewBox="0 0 24 24" stroke-width="1.2"><path fill="currentColor" stroke="none" d="M12 2.9l2.05 4.95 5.35.43-4.06 3.5 1.23 5.23L12 14.4l-4.57 2.61 1.23-5.23-4.06-3.5 5.35-.43z"/></svg>Grand Hustle</a>
+        <a class="chip"><svg viewBox="0 0 24 24" stroke-width="1.5"><path d="M9.4 8.6 6.9 9.3 3.4 5.6c2.3.1 4.3 1 5.8 2.4"/><path d="M14.6 8.6 17.1 9.3 20.6 5.6c-2.3.1-4.3 1-5.8 2.4"/><path d="M9 7.9l1.1-1.5 1 .9 1-1.4 1 1.4 1-.9 1 1.5"/><path d="M12 8.3c-2.7 0-4.8 1.7-4.8 4.2 0 2.4 2.1 4.5 4.8 4.5s4.8-2.1 4.8-4.5c0-2.5-2.1-4.2-4.8-4.2z"/><path d="M9.7 14.1c.4 1.5 1.2 2.3 2.3 2.3s1.9-.8 2.3-2.3"/><path fill="currentColor" stroke="none" d="M9.6 10.9a.95.95 0 1 1 0 1.9.95.95 0 0 1 0-1.9zm4.8 0a.95.95 0 1 1 0 1.9.95.95 0 0 1 0-1.9z"/><path fill="currentColor" stroke="none" d="M10.7 14.9a.6.6 0 1 1 0 1.2.6.6 0 0 1 0-1.2zm2.6 0a.6.6 0 1 1 0 1.2.6.6 0 0 1 0-1.2z"/></svg>Buffalo slots</a>
+        <a class="chip"><svg viewBox="0 0 24 24" stroke-width="1.6"><rect x="3.6" y="3.6" width="7" height="7" rx="2"/><rect x="13.4" y="3.6" width="7" height="7" rx="2"/><rect x="3.6" y="13.4" width="7" height="7" rx="2"/><rect x="13.4" y="13.4" width="7" height="7" rx="2"/></svg>All games</a>
+        <a class="chip arrow">&#8250;</a>
       </section>
-      <div class="sechead"><h2>Fast</h2><div class="arrows"><button>‹</button><button>›</button></div></div>
+
+      <!-- секция: Quick games -->
+      <div class="sechead"><h2><svg viewBox="0 0 24 24"><path fill="currentColor" stroke="none" d="M13.6 2.5 6.2 13.1h4.3L9.3 21.5l7.5-10.7h-4.5z"/></svg>Quick games</h2><div class="arrows"><button>&#8249;</button><button>&#8250;</button></div></div>
       <section class="grid">
-        <a class="tile"><div class="art"><img src="t1.png"></div><div class="tmeta"><i></i>1,553 playing</div></a>
-        <a class="tile"><div class="art"><img src="t2.png"></div><div class="tmeta"><i></i>390 playing</div></a>
-        <a class="tile"><div class="art"><img src="t3.png"></div><div class="tmeta"><i></i>888 playing</div></a>
-        <a class="tile"><div class="art"><img src="t4.png"></div><div class="tmeta"><i></i>403 playing</div></a>
-        <a class="tile"><div class="art"><img src="t5.png"></div><div class="tmeta"><i></i>417 playing</div></a>
-        <a class="tile"><div class="art"><img src="t6.png"></div><div class="tmeta"><i></i>520 playing</div></a>
-        <a class="tile"><div class="art"><img src="t7.png"></div><div class="tmeta"><i></i>144 playing</div></a>
-        <a class="tile"><div class="art"><img src="t8.png"></div><div class="tmeta"><i></i>236 playing</div></a>
-        <a class="tile"><div class="art"><img src="t9.png"></div><div class="tmeta"><i></i>342 playing</div></a>
+        <a class="tile"><div class="art"><img src="img/t1.png" alt=""></div><div class="tmeta"><i></i>1,553 playing</div></a>
+        <a class="tile"><div class="art"><img src="img/t2.png" alt=""></div><div class="tmeta"><i></i>390 playing</div></a>
+        <a class="tile"><div class="art"><img src="img/t3.png" alt=""></div><div class="tmeta"><i></i>888 playing</div></a>
+        <a class="tile"><div class="art"><img src="img/t4.png" alt=""></div><div class="tmeta"><i></i>403 playing</div></a>
+        <a class="tile"><div class="art"><img src="img/t5.png" alt=""></div><div class="tmeta"><i></i>417 playing</div></a>
+        <a class="tile"><div class="art"><img src="img/t6.png" alt=""></div><div class="tmeta"><i></i>520 playing</div></a>
+        <a class="tile"><div class="art"><img src="img/t7.png" alt=""></div><div class="tmeta"><i></i>144 playing</div></a>
+        <a class="tile"><div class="art"><img src="img/t8.png" alt=""></div><div class="tmeta"><i></i>236 playing</div></a>
+        <a class="tile"><div class="art"><img src="img/t9.png" alt=""></div><div class="tmeta"><i></i>342 playing</div></a>
       </section>
-      <div class="sechead"><h2>AI picks</h2><div class="arrows"><button>‹</button><button>›</button></div></div>
+
+      <!-- секция: Popular -->
+      <div class="sechead"><h2><svg viewBox="0 0 24 24"><path fill="currentColor" stroke="none" d="M12 2.8c3.7 3.5 5.7 6.2 5.7 9a5.7 5.7 0 0 1-11.4 0c0-2.8 2-5.5 5.7-9z"/></svg>Popular</h2><div class="arrows"><button>&#8249;</button><button>&#8250;</button></div></div>
       <section class="grid">
-        <a class="tile"><div class="art"><img src="t10.png"></div><div class="tmeta"><i></i>612 playing</div></a>
-        <a class="tile"><div class="art"><img src="t11.png"></div><div class="tmeta"><i></i>980 playing</div></a>
-        <a class="tile"><div class="art"><img src="t12.png"></div><div class="tmeta"><i></i>441 playing</div></a>
-        <a class="tile"><div class="art"><img src="t15.png"></div><div class="tmeta"><i></i>733 playing</div></a>
-        <a class="tile"><div class="art"><img src="t16.png"></div><div class="tmeta"><i></i>305 playing</div></a>
-        <a class="tile"><div class="art"><img src="t17.png"></div><div class="tmeta"><i></i>864 playing</div></a>
-        <a class="tile"><div class="art"><img src="t18.png"></div><div class="tmeta"><i></i>512 playing</div></a>
-        <a class="tile"><div class="art"><img src="t14.png"></div><div class="tmeta"><i></i>277 playing</div></a>
-        <a class="tile"><div class="art"><img src="t13.png"></div><div class="tmeta"><i></i>1,208 playing</div></a>
+        <a class="tile"><div class="art"><img src="img/t9.png" alt=""></div><div class="tmeta"><i></i>342 playing</div></a>
+        <a class="tile"><div class="art"><img src="img/t3.png" alt=""></div><div class="tmeta"><i></i>888 playing</div></a>
+        <a class="tile"><div class="art"><img src="img/t13.png" alt=""></div><div class="tmeta"><i></i>1,208 playing</div></a>
+        <a class="tile"><div class="art"><img src="img/t2.png" alt=""></div><div class="tmeta"><i></i>390 playing</div></a>
+        <a class="tile"><div class="art"><img src="img/t1.png" alt=""></div><div class="tmeta"><i></i>1,553 playing</div></a>
+        <a class="tile"><div class="art"><img src="img/t6.png" alt=""></div><div class="tmeta"><i></i>520 playing</div></a>
+        <a class="tile"><div class="art"><img src="img/t15.png" alt=""></div><div class="tmeta"><i></i>733 playing</div></a>
+        <a class="tile"><div class="art"><img src="img/t11.png" alt=""></div><div class="tmeta"><i></i>980 playing</div></a>
+        <a class="tile"><div class="art"><img src="img/t8.png" alt=""></div><div class="tmeta"><i></i>236 playing</div></a>
       </section>
-      <div class="sechead"><h2>Popular</h2><div class="arrows"><button>‹</button><button>›</button></div></div>
-      <section class="grid">
-        <a class="tile"><div class="art"><img src="t9.png"></div><div class="tmeta"><i></i>342 playing</div></a>
-        <a class="tile"><div class="art"><img src="t3.png"></div><div class="tmeta"><i></i>888 playing</div></a>
-        <a class="tile"><div class="art"><img src="t13.png"></div><div class="tmeta"><i></i>1,208 playing</div></a>
-        <a class="tile"><div class="art"><img src="t2.png"></div><div class="tmeta"><i></i>390 playing</div></a>
-        <a class="tile"><div class="art"><img src="t1.png"></div><div class="tmeta"><i></i>1,553 playing</div></a>
-        <a class="tile"><div class="art"><img src="t6.png"></div><div class="tmeta"><i></i>520 playing</div></a>
-        <a class="tile"><div class="art"><img src="t15.png"></div><div class="tmeta"><i></i>733 playing</div></a>
-        <a class="tile"><div class="art"><img src="t11.png"></div><div class="tmeta"><i></i>980 playing</div></a>
-        <a class="tile"><div class="art"><img src="t8.png"></div><div class="tmeta"><i></i>236 playing</div></a>
-      </section>
-      <div class="sechead"><h2 class="plain">Tournaments</h2><div class="arrows"><span class="all">All</span><button>‹</button><button>›</button></div></div>
+
+      <!-- турниры -->
+      <div class="sechead"><h2 class="plain">Tournaments</h2><div class="arrows"><span class="all">All</span><button>&#8249;</button><button>&#8250;</button></div></div>
       <section class="trn">
-        <a class="tcard"><img class="tc-art" src="t13.png"><span class="tc-badge">Active</span><span class="tc-t">Crypto Season: Mix</span><span class="tc-v">200K USDT</span><span class="tc-f">Until end of tournament</span><span class="tc-cd">36 : 15 : 54 : 22</span><span class="tc-btn">More details</span></a>
-        <a class="tcard"><img class="tc-art" src="t5.png"><span class="tc-badge">Active</span><span class="tc-t">Crypto Month</span><span class="tc-v">50K USDT</span><span class="tc-f">Until end of tournament</span><span class="tc-cd">11 : 15 : 54 : 22</span><span class="tc-btn">More details</span></a>
-        <a class="tcard"><img class="tc-art" src="t9.png"><span class="tc-badge">Active</span><span class="tc-t">Drops &amp; Wins 2026</span><span class="tc-v">25M €</span><span class="tc-f">Until end of tournament</span><span class="tc-cd">84 : 15 : 33 : 22</span><span class="tc-btn">More details</span></a>
+        <a class="tcard"><img class="tc-art" src="img/t13.png" alt=""><span class="tc-badge">Active</span><span class="tc-t">Crypto Season: Mix</span><span class="tc-v">200K USDT</span><span class="tc-f">Until end of tournament</span><span class="tc-cd">36 : 15 : 54 : 22</span><span class="tc-btn">More details</span></a>
+        <a class="tcard"><img class="tc-art" src="img/t5.png" alt=""><span class="tc-badge">Active</span><span class="tc-t">Crypto Month</span><span class="tc-v">50K USDT</span><span class="tc-f">Until end of tournament</span><span class="tc-cd">11 : 15 : 54 : 22</span><span class="tc-btn">More details</span></a>
+        <a class="tcard"><img class="tc-art" src="img/t9.png" alt=""><span class="tc-badge">Active</span><span class="tc-t">Drops &amp; Wins 2026</span><span class="tc-v">25M &#8364;</span><span class="tc-f">Until end of tournament</span><span class="tc-cd">84 : 15 : 33 : 22</span><span class="tc-btn">More details</span></a>
       </section>
-    </main>
-  </div>
-</div>
-<script>
-const s=[...document.querySelectorAll('.slide')],d=[...document.querySelectorAll('.dot')];let i=0;
-const show=n=>{i=(n+s.length)%s.length;s.forEach((x,k)=>x.classList.toggle('on',k===i));d.forEach((x,k)=>x.classList.toggle('on',k===i));};
-d.forEach((x,k)=>x.onclick=()=>show(k));
-document.querySelector('.prev').onclick=()=>show(i-1);
-document.querySelector('.next').onclick=()=>show(i+1);
-setInterval(()=>show(i+1),6000);
-</script>
-</body>
-</html>
+
+      <!-- секция: Grand Hustle -->
+      <div class="sechead"><h2><svg viewBox="0 0 24 24" stroke-width="1.2"><path fill="currentColor" stroke="none" d="M12 2.9l2.05 4.95 5.35.43-4.06 3.5 1.23 5.23L12 14.4l-4.57 2.61 1.
