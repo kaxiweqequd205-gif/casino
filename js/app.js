@@ -4,3 +4,6 @@ d.forEach((x,k)=>x.onclick=()=>show(k));
 document.querySelector('.prev').onclick=()=>show(i-1);
 document.querySelector('.next').onclick=()=>show(i+1);
 setInterval(()=>show(i+1),6000);
+
+const _f=document.querySelector('.frame'),_t=document.querySelector('.sbtoggle');
+_t.onclick=()=>_f.classList.toggle('mini');
