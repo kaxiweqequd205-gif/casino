@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Casino</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,400;0,500;0,600;0,700;0,800;1,900&display=swap');
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:#0C0C0C;font-family:Inter,system-ui,sans-serif;-webkit-font-smoothing:antialiased;color:#fff}
+.frame{width:100%;min-height:100vh;display:flex;flex-direction:column;overflow:hidden;max-width:1600px;margin:0 auto}
+svg{width:16px;height:16px;fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
+.chev{width:14px;height:14px;color:#6B6B6B}
+.top{height:64px;flex:0 0 64px;display:flex;align-items:center;gap:14px;padding:0 20px 0 24px;border-bottom:1px solid #1A1A1A}
+.logo{display:flex;align-items:center;gap:9px}
+.m7{font:900 26px/1 Inter;letter-spacing:-.15em;transform:skewX(-9deg)}
+.m7 em{font-style:normal;color:#2F6BFF}
+.wm{font:900 19px/1 Inter;font-style:italic;letter-spacing:-.03em}
+.pills{display:flex;gap:6px;margin-left:6px}
+.pill{display:flex;align-items:center;gap:7px;font:600 12.5px Inter;color:#C9C9C9;background:#1A1A1A;border-radius:99px;padding:9px 16px;text-decoration:none}
+.pill.on{background:#2F6BFF;color:#fff}
+.pill svg{width:15px;height:15px}
+.topr{margin-left:auto;display:flex;align-items:center;gap:11px}
+.cur{font:600 9px Inter;letter-spacing:.14em;color:#7E7E7E}
+.bal{font:700 13px Inter}
+.btn-g{background:#16C05C;color:#04180C;border:0;border-radius:99px;font:700 12.5px Inter;padding:10px 20px;cursor:pointer}
+.ic{width:36px;height:36px;border-radius:99px;background:#1A1A1A;border:0;color:#C9C9C9;display:grid;place-items:center;cursor:pointer}
+.ava{width:32px;height:32px;border-radius:99px;background:#2F6BFF;display:grid;place-items:center;font:700 12px Inter}
+.ava.lg{width:38px;height:38px;flex:0 0 38px;font-size:14px}
+.body{flex:1;display:flex;min-height:0}
+.side{width:236px;flex:0 0 236px;margin:10px 0 10px 10px;background:#141414;border-radius:12px;padding:12px 10px;display:flex;flex-direction:column;gap:1px;overflow:hidden}
+.acc{display:flex;align-items:center;gap:9px;padding:8px 8px 12px;border-bottom:1px solid #1E1E1E;margin-bottom:6px}
+.acc b{display:block;font:700 11.5px Inter}
+.acc small{font-size:9px;color:#6B6B6B}
+.acc .chev{margin-left:auto}
+.nav{display:flex;align-items:center;gap:10px;padding:7px 9px;border-radius:8px;color:#BDBDBD;font:500 12px Inter;text-decoration:none;cursor:pointer}
+.nav svg:first-child{color:#7A7A7A}
+.nav:hover{background:#1D1D1D;color:#fff}
+.nav .chev{margin-left:auto}
+.badge{margin-left:auto;background:#FF7A18;color:#160800;font:800 9px Inter;padding:2px 6px;border-radius:99px}
+.sub{display:flex;flex-direction:column;padding:2px 0 6px 38px}
+.sub a{font:400 11.5px Inter;color:#8A8A8A;padding:4px 0;cursor:pointer}
+.side-foot{margin-top:auto;padding-top:9px;border-top:1px solid #1E1E1E}
+.app{display:flex;align-items:center;gap:8px;background:#1D1D1D;border-radius:9px;padding:8px 9px}
+.app-ic{width:22px;height:22px;border-radius:6px;background:#2F6BFF;display:grid;place-items:center;font-size:11px}
+.app b{display:block;font:600 10.5px Inter}
+.app small{font-size:8.5px;color:#7A7A7A}
+.app .chev{margin-left:auto}
+.soc{display:flex;gap:6px;padding:8px 2px 0}
+.soc span{width:26px;height:26px;border-radius:99px;background:#1D1D1D;display:grid;place-items:center;font-size:10px;color:#BDBDBD}
+.main{flex:1;min-width:0;padding:10px 14px 20px;display:flex;flex-direction:column;gap:8px;overflow:hidden}
+.row1{display:flex;gap:12px}
+.hero{position:relative;flex:1;aspect-ratio:5/2;border-radius:14px;overflow:hidden;background:#101820}
+.slides{position:absolute;inset:0}
+.slide{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity .45s}
+.slide.on{opacity:1}
+.dots{position:absolute;left:50%;bottom:9px;transform:translateX(-50%);display:flex;gap:5px;z-index:3}
+.dot{width:6px;height:6px;border-radius:99px;background:rgba(255,255,255,.45);border:0;padding:0;cursor:pointer}
+.dot.on{background:#fff;width:16px}
+.hnav{position:absolute;right:9px;bottom:7px;display:flex;gap:5px;z-index:3}
+.hbtn{width:24px;height:24px;border-radius:99px;border:0;background:rgba(0,0,0,.4);color:#fff;font-size:13px;cursor:pointer;line-height:1}
+.rail-top{width:296px;flex:0 0 296px;display:flex;flex-direction:column;gap:12px}
+.promo{position:relative;flex:1;border-radius:14px;overflow:hidden;text-decoration:none;color:inherit;display:block}
+.promo img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.psc{position:absolute;inset:0;background:linear-gradient(180deg,rgba(180,154,120,.95) 0%,rgba(180,154,120,.55) 42%,rgba(180,154,120,0) 62%)}
+.psc.d{background:linear-gradient(180deg,rgba(16,16,16,.96) 0%,rgba(16,16,16,.6) 44%,rgba(16,16,16,0) 64%)}
+.ptxt{position:absolute;left:15px;top:13px;right:15px;display:flex;flex-direction:column;gap:4px}
+.ptxt b{font:700 16px/1.1 Inter;letter-spacing:-.02em;color:#191208}
+.promo.dark .ptxt b{color:#fff}
+.ptxt small{font:500 10.5px/1.3 Inter;color:rgba(25,18,8,.78);max-width:170px}
+.promo.dark .ptxt small{color:#A8A8A8;display:flex;align-items:center;gap:5px}
+.ptxt small i{width:5px;height:5px;border-radius:99px;background:#8A8A8A}
+.searchrow{display:flex;gap:8px}
+.srch{flex:1;height:34px;display:flex;align-items:center;gap:8px;padding:0 13px;border-radius:9px;background:#171717;color:#7E7E7E;font:400 12px Inter}
+.srch svg{width:14px;height:14px}
+.prov-btn{width:296px;flex:0 0 296px;height:34px;display:flex;align-items:center;justify-content:center;gap:8px;border-radius:9px;background:#171717;border:0;color:#C9C9C9;font:600 12px Inter;cursor:pointer}
+.prov-btn svg{width:13px;height:13px}
+.chips{display:flex;gap:7px;align-items:center}
+.chip{display:flex;align-items:center;gap:7px;height:34px;padding:0 14px;border-radius:9px;background:#1A1A1A;color:#C9C9C9;font:600 12px Inter;text-decoration:none;cursor:pointer;white-space:nowrap}
+.chip svg{width:14px;height:14px;color:#8A8A8A}
+.chip.on{background:#2F6BFF;color:#fff}
+.chip.on svg{color:#fff}
+.chip.arrow{margin-left:auto;padding:0;width:34px;justify-content:center;background:transparent}
+.sechead{display:flex;align-items:center;justify-content:space-between}
+.sechead h2{font:700 16px Inter;display:flex;align-items:center;gap:7px}
+.sechead h2::before{content:"♛";color:#E0B33C;font-size:13px}
+.sechead h2.plain::before{display:none}
+.all{font:600 11px Inter;color:#C9C9C9;background:#1A1A1A;border-radius:7px;padding:4px 10px;cursor:pointer;margin-right:4px}
+.arrows{display:flex;gap:5px;align-items:center}
+.arrows button{width:24px;height:24px;border-radius:99px;background:#1A1A1A;border:0;color:#C9C9C9;font-size:13px;cursor:pointer;line-height:1}
+.grid{display:grid;grid-template-columns:repeat(9,1fr);gap:8px}
+.tile{cursor:pointer;border-radius:9px;overflow:hidden;background:#171717}
+.art{aspect-ratio:3/3.4;overflow:hidden}
+.art img{width:100%;height:100%;object-fit:cover;transition:transform .3s}
+.tile:hover .art img{transform:scale(1.05)}
+.tmeta{display:flex;align-items:center;gap:4px;font:500 8.5px Inter;color:#9A9A9A;padding:4px 0 2px}
+.tmeta i{width:4px;height:4px;border-radius:99px;background:#16C05C}
+.trn{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.tcard{position:relative;height:132px;border-radius:12px;overflow:hidden;background:#161616;cursor:pointer;padding:13px 15px;display:flex;flex-direction:column;text-decoration:none;color:inherit}
+.tc-art{position:absolute;right:0;top:0;height:100%;width:52%;object-fit:cover;opacity:.85;-webkit-mask-image:linear-gradient(90deg,transparent,#000 42%);mask-image:linear-gradient(90deg,transparent,#000 42%)}
+.tcard::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(22,22,22,.97) 26%,rgba(22,22,22,.6) 52%,rgba(22,22,22,.15) 78%)}
+.tc-badge{position:relative;z-index:2;align-self:flex-start;background:#16C05C;color:#04180C;font:700 9px Inter;padding:3px 8px;border-radius:6px;margin-bottom:auto}
+.tc-t{position:relative;z-index:2;font:500 11.5px Inter;color:#B9B9B9;margin-top:10px}
+.tc-v{position:relative;z-index:2;font:800 24px/1.1 Inter;letter-spacing:-.03em;margin:2px 0 8px}
+.tc-f{position:relative;z-index:2;font:400 8.5px Inter;color:#7E7E7E}
+.tc-cd{position:relative;z-index:2;font:700 11px Inter;color:#C9C9C9;letter-spacing:.14em}
+.tc-btn{position:absolute;z-index:3;right:12px;bottom:12px;background:#242424;color:#fff;font:600 10.5px Inter;padding:7px 13px;border-radius:8px}
+</style>
+</head>
+<body>
+<div class="frame">
+  <header class="top">
+    <div class="logo"><span class="m7">7<em>7</em>7</span><span class="wm">CASINO</span></div>
+    <nav class="pills">
+      <a class="pill on">Home</a><a class="pill">Casino</a><a class="pill">Free money</a><a class="pill">Sport</a>
+    </nav>
+    <div class="topr">
+      <span class="cur">USD</span><span class="bal">0.00</span>
+      <button class="btn-g">Deposit</button>
+      <button class="ic">🔔</button><span class="ava">M</span>
+    </div>
+  </header>
+  <div class="body">
+    <aside class="side">
+      <div class="acc"><span class="ava lg">M</span><div><b>MFXPFBADTRZ</b><small>ID 392144308</small></div></div>
+      <a class="nav">Casino</a>
+      <div class="sub"><a>Lobby</a><a>Fast games</a><a>Originals</a></div>
+      <a class="nav">Sports</a>
+      <a class="nav">Deposits &amp; withdrawals</a>
+      <a class="nav">Profile</a>
+      <a class="nav">Bonus<span class="badge">1</span></a>
+      <a class="nav">Promotions</a>
+      <a class="nav">Premium club</a>
+      <a class="nav">Premium loyalty program</a>
+      <a class="nav">Partners</a>
+      <a class="nav">License</a>
+      <a class="nav">About us</a>
+      <a class="nav">Feedback</a>
+      <div class="side-foot">
+        <div class="app"><span class="app-ic">◲</span><div><b>Casino app</b><small>Fast access</small></div></div>
+        <div class="soc"><span>✈</span><span>◎</span><span>▶</span><span>✉</span></div>
+      </div>
+    </aside>
+    <main class="main">
+      <div class="row1">
+        <section class="hero">
+          <div class="slides">
+            <img class="slide on" src="VeniceAI_Ni43DTPZbMUTdQ_0.png">
+            <img class="slide" src="VeniceAI_9puTV3HK7iDevS_2.png">
+            <img class="slide" src="VeniceAI_9puTV3HK7iDevS_1.png">
+          </div>
+          <div class="dots"><button class="dot on"></button><button class="dot"></button><button class="dot"></button></div>
+          <div class="hnav"><button class="hbtn prev">‹</button><button class="hbtn next">›</button></div>
+        </section>
+        <aside class="rail-top">
+          <a class="promo tan"><img src="VeniceAI_HdV87In42-wAip_0.png"><span class="psc"></span><span class="ptxt"><b>Free money</b><small>Range Rover and other prizes</small></span></a>
+          <a class="promo dark"><img src="VeniceAI_HdV87In42-wAip_1.png"><span class="psc d"></span><span class="ptxt"><b>Bonuses</b><small><i></i>1 available bonus</small></span></a>
+        </aside>
+      </div>
+      <div class="searchrow"><div class="srch">Search</div><button class="prov-btn">Providers</button></div>
+      <section class="chips">
+        <a class="chip on">Lobby</a><a class="chip">Fast</a><a class="chip">AI picks</a><a class="chip">Popular</a>
+        <a class="chip">Grand Hustle</a><a class="chip">Slots</a><a class="chip">Bonus buy</a><a class="chip">New</a>
+        <a class="chip arrow">›</a>
+      </section>
+      <div class="sechead"><h2>Fast</h2><div class="arrows"><button>‹</button><button>›</button></div></div>
+      <section class="grid">
+        <a class="tile"><div class="art"><img src="t1.png"></div><div class="tmeta"><i></i>1,553 playing</div></a>
+        <a class="tile"><div class="art"><img src="t2.png"></div><div class="tmeta"><i></i>390 playing</div></a>
+        <a class="tile"><div class="art"><img src="t3.png"></div><div class="tmeta"><i></i>888 playing</div></a>
+        <a class="tile"><div class="art"><img src="t4.png"></div><div class="tmeta"><i></i>403 playing</div></a>
+        <a class="tile"><div class="art"><img src="t5.png"></div><div class="tmeta"><i></i>417 playing</div></a>
+        <a class="tile"><div class="art"><img src="t6.png"></div><div class="tmeta"><i></i>520 playing</div></a>
+        <a class="tile"><div class="art"><img src="t7.png"></div><div class="tmeta"><i></i>144 playing</div></a>
+        <a class="tile"><div class="art"><img src="t8.png"></div><div class="tmeta"><i></i>236 playing</div></a>
+        <a class="tile"><div class="art"><img src="t9.png"></div><div class="tmeta"><i></i>342 playing</div></a>
+      </section>
+      <div class="sechead"><h2>AI picks</h2><div class="arrows"><button>‹</button><button>›</button></div></div>
+      <section class="grid">
+        <a class="tile"><div class="art"><img src="t10.png"></div><div class="tmeta"><i></i>612 playing</div></a>
+        <a class="tile"><div class="art"><img src="t11.png"></div><div class="tmeta"><i></i>980 playing</div></a>
+        <a class="tile"><div class="art"><img src="t12.png"></div><div class="tmeta"><i></i>441 playing</div></a>
+        <a class="tile"><div class="art"><img src="t15.png"></div><div class="tmeta"><i></i>733 playing</div></a>
+        <a class="tile"><div class="art"><img src="t16.png"></div><div class="tmeta"><i></i>305 playing</div></a>
+        <a class="tile"><div class="art"><img src="t17.png"></div><div class="tmeta"><i></i>864 playing</div></a>
+        <a class="tile"><div class="art"><img src="t18.png"></div><div class="tmeta"><i></i>512 playing</div></a>
+        <a class="tile"><div class="art"><img src="t14.png"></div><div class="tmeta"><i></i>277 playing</div></a>
+        <a class="tile"><div class="art"><img src="t13.png"></div><div class="tmeta"><i></i>1,208 playing</div></a>
+      </section>
+      <div class="sechead"><h2>Popular</h2><div class="arrows"><button>‹</button><button>›</button></div></div>
+      <section class="grid">
+        <a class="tile"><div class="art"><img src="t9.png"></div><div class="tmeta"><i></i>342 playing</div></a>
+        <a class="tile"><div class="art"><img src="t3.png"></div><div class="tmeta"><i></i>888 playing</div></a>
+        <a class="tile"><div class="art"><img src="t13.png"></div><div class="tmeta"><i></i>1,208 playing</div></a>
+        <a class="tile"><div class="art"><img src="t2.png"></div><div class="tmeta"><i></i>390 playing</div></a>
+        <a class="tile"><div class="art"><img src="t1.png"></div><div class="tmeta"><i></i>1,553 playing</div></a>
+        <a class="tile"><div class="art"><img src="t6.png"></div><div class="tmeta"><i></i>520 playing</div></a>
+        <a class="tile"><div class="art"><img src="t15.png"></div><div class="tmeta"><i></i>733 playing</div></a>
+        <a class="tile"><div class="art"><img src="t11.png"></div><div class="tmeta"><i></i>980 playing</div></a>
+        <a class="tile"><div class="art"><img src="t8.png"></div><div class="tmeta"><i></i>236 playing</div></a>
+      </section>
+      <div class="sechead"><h2 class="plain">Tournaments</h2><div class="arrows"><span class="all">All</span><button>‹</button><button>›</button></div></div>
+      <section class="trn">
+        <a class="tcard"><img class="tc-art" src="t13.png"><span class="tc-badge">Active</span><span class="tc-t">Crypto Season: Mix</span><span class="tc-v">200K USDT</span><span class="tc-f">Until end of tournament</span><span class="tc-cd">36 : 15 : 54 : 22</span><span class="tc-btn">More details</span></a>
+        <a class="tcard"><img class="tc-art" src="t5.png"><span class="tc-badge">Active</span><span class="tc-t">Crypto Month</span><span class="tc-v">50K USDT</span><span class="tc-f">Until end of tournament</span><span class="tc-cd">11 : 15 : 54 : 22</span><span class="tc-btn">More details</span></a>
+        <a class="tcard"><img class="tc-art" src="t9.png"><span class="tc-badge">Active</span><span class="tc-t">Drops &amp; Wins 2026</span><span class="tc-v">25M €</span><span class="tc-f">Until end of tournament</span><span class="tc-cd">84 : 15 : 33 : 22</span><span class="tc-btn">More details</span></a>
+      </section>
+    </main>
+  </div>
+</div>
+<script>
+const s=[...document.querySelectorAll('.slide')],d=[...document.querySelectorAll('.dot')];let i=0;
+const show=n=>{i=(n+s.length)%s.length;s.forEach((x,k)=>x.classList.toggle('on',k===i));d.forEach((x,k)=>x.classList.toggle('on',k===i));};
+d.forEach((x,k)=>x.onclick=()=>show(k));
+document.querySelector('.prev').onclick=()=>show(i-1);
+document.querySelector('.next').onclick=()=>show(i+1);
+setInterval(()=>show(i+1),6000);
+</script>
+</body>
+</html>
