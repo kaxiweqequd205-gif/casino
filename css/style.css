@@ -1,0 +1,121 @@
+/* ============================================================
+   CASINO — style.css
+   Блоки идут в порядке страницы. Правка одного блока = только его строки.
+   ============================================================ */
+
+/* ---------- база ---------- */
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:#0C0C0C;font-family:Inter,system-ui,sans-serif;-webkit-font-smoothing:antialiased;color:#fff}
+.frame{width:100%;min-height:100vh;display:flex;flex-direction:column;overflow:hidden;max-width:1600px;margin:0 auto}
+svg{width:16px;height:16px;fill:none;stroke:currentcolor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
+
+/* ---------- шапка ---------- */
+.top{height:64px;flex:0 0 64px;display:flex;align-items:center;gap:14px;padding:0 20px 0 24px;border-bottom:1px solid #1A1A1A}
+.logo{display:flex;align-items:center;gap:9px}
+.m7{font:900 26px/1 Inter;letter-spacing:-.15em;transform:skewX(-9deg)}
+.m7 em{font-style:normal;color:#2F6BFF}
+.wm{font:italic 900 19px/1 Inter;letter-spacing:-.03em}
+.pills{display:flex;gap:6px;margin-left:6px}
+.pill{display:flex;align-items:center;gap:7px;font:600 12.5px Inter;color:#C9C9C9;background:#1A1A1A;border-radius:99px;padding:9px 16px;text-decoration:none}
+.pill.on{background:#2F6BFF;color:#fff}
+.topr{margin-left:auto;display:flex;align-items:center;gap:11px}
+.cur{font:600 9px Inter;letter-spacing:.14em;color:#7E7E7E}
+.bal{font:700 13px Inter}
+.btn-g{background:#16C05C;color:#04180C;border:0;border-radius:99px;font:700 12.5px Inter;padding:10px 20px;cursor:pointer}
+.ic{width:36px;height:36px;border-radius:99px;background:#1A1A1A;border:0;color:#C9C9C9;display:grid;place-items:center;cursor:pointer}
+.ava{width:32px;height:32px;border-radius:99px;background:#2F6BFF;display:grid;place-items:center;font:700 12px Inter}
+.ava.lg{width:38px;height:38px;flex:0 0 38px;font-size:14px}
+
+/* ---------- каркас ---------- */
+.body{flex:1;display:flex;min-height:0}
+
+/* ---------- сайдбар ---------- */
+.side{width:236px;flex:0 0 236px;margin:10px 0 10px 10px;background:#141414;border-radius:12px;padding:12px 10px;display:flex;flex-direction:column;gap:1px;overflow:hidden}
+.acc{display:flex;align-items:center;gap:9px;padding:8px 8px 12px;border-bottom:1px solid #1E1E1E;margin-bottom:6px}
+.acc b{display:block;font:700 11.5px Inter}
+.acc small{font-size:9px;color:#6B6B6B}
+.nav{display:flex;align-items:center;gap:10px;padding:7px 9px;border-radius:8px;color:#BDBDBD;font:500 12px Inter;text-decoration:none;cursor:pointer}
+.nav svg{width:14px;height:14px;flex:0 0 14px;color:#7A7A7A}
+.nav:hover{background:#1D1D1D;color:#fff}
+.badge{margin-left:auto;background:#FF7A18;color:#160800;font:800 9px Inter;padding:2px 6px;border-radius:99px}
+.sub{display:flex;flex-direction:column;padding:2px 0 6px 38px}
+.sub a{font:400 11.5px Inter;color:#8A8A8A;padding:4px 0;cursor:pointer}
+.side-foot{margin-top:auto;padding-top:9px;border-top:1px solid #1E1E1E}
+.app{display:flex;align-items:center;gap:8px;background:#1D1D1D;border-radius:9px;padding:8px 9px}
+.app-ic{width:22px;height:22px;border-radius:6px;background:#2F6BFF;display:grid;place-items:center;font-size:11px}
+.app b{display:block;font:600 10.5px Inter}
+.app small{font-size:8.5px;color:#7A7A7A}
+.soc{display:flex;gap:6px;padding:8px 2px 0}
+.soc span{width:26px;height:26px;border-radius:99px;background:#1D1D1D;display:grid;place-items:center;font-size:10px;color:#BDBDBD}
+
+/* ---------- контент ---------- */
+.main{flex:1;min-width:0;padding:10px 14px 20px;display:flex;flex-direction:column;gap:8px;overflow:hidden}
+
+/* ---------- баннер ---------- */
+.row1{display:flex;gap:12px}
+.hero{position:relative;flex:1;aspect-ratio:5/2;border-radius:14px;overflow:hidden;background:#101820}
+.slides{position:absolute;inset:0}
+.slide{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity .45s}
+.slide.on{opacity:1}
+.dots{position:absolute;left:50%;bottom:9px;transform:translateX(-50%);display:flex;gap:5px;z-index:3}
+.dot{width:6px;height:6px;border-radius:99px;background:rgba(255,255,255,.45);border:0;padding:0;cursor:pointer}
+.dot.on{background:#fff;width:16px}
+.hnav{position:absolute;right:9px;bottom:7px;display:flex;gap:5px;z-index:3}
+.hbtn{width:24px;height:24px;border-radius:99px;border:0;background:rgba(0,0,0,.4);color:#fff;font-size:13px;cursor:pointer;line-height:1}
+
+/* ---------- промо справа ---------- */
+.rail-top{width:296px;flex:0 0 296px;display:flex;flex-direction:column;gap:12px}
+.promo{position:relative;flex:1;border-radius:14px;overflow:hidden;text-decoration:none;color:inherit;display:block}
+.promo img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.psc{position:absolute;inset:0;background:linear-gradient(rgba(180,154,120,.95) 0%,rgba(180,154,120,.55) 42%,rgba(180,154,120,0) 62%)}
+.psc.d{background:linear-gradient(rgba(16,16,16,.96) 0%,rgba(16,16,16,.6) 44%,rgba(16,16,16,0) 64%)}
+.ptxt{position:absolute;left:15px;top:13px;right:15px;display:flex;flex-direction:column;gap:4px}
+.ptxt b{font:700 16px/1.1 Inter;letter-spacing:-.02em;color:#191208}
+.promo.dark .ptxt b{color:#fff}
+.ptxt small{font:500 10.5px/1.3 Inter;color:rgba(25,18,8,.78);max-width:170px}
+.promo.dark .ptxt small{color:#A8A8A8;display:flex;align-items:center;gap:5px}
+.ptxt small i{width:5px;height:5px;border-radius:99px;background:#16C05C;animation:pl 1.4s infinite}
+@keyframes pl{0%,100%{opacity:1;box-shadow:0 0 0 0 rgba(22,192,92,.7)}50%{opacity:.45;box-shadow:0 0 0 5px rgba(22,192,92,0)}}
+
+/* ---------- поиск ---------- */
+.searchrow{display:flex;gap:8px}
+.srch{flex:1;height:34px;display:flex;align-items:center;gap:8px;padding:0 13px;border-radius:9px;background:#171717;color:#7E7E7E;font:400 12px Inter}
+.srch svg{width:14px;height:14px}
+.prov-btn{width:296px;flex:0 0 296px;height:34px;display:flex;align-items:center;justify-content:center;border-radius:9px;background:#171717;border:0;color:#C9C9C9;font:600 12px Inter;cursor:pointer}
+
+/* ---------- категории ---------- */
+.chips{display:flex;gap:7px;align-items:center}
+.chip{display:flex;align-items:center;gap:7px;height:34px;padding:0 14px;border-radius:9px;background:#1A1A1A;color:#C9C9C9;font:600 12px Inter;text-decoration:none;cursor:pointer;white-space:nowrap}
+.chip svg{width:15px;height:15px;color:#8A8A8A}
+.chip.on{background:#2F6BFF;color:#fff}
+.chip.on svg{color:#fff}
+.chip.arrow{margin-left:auto;padding:0;width:34px;justify-content:center;background:transparent}
+
+/* ---------- заголовки секций ---------- */
+.sechead{display:flex;align-items:center;justify-content:space-between}
+.sechead h2{font:700 16px Inter;display:flex;align-items:center;gap:8px}
+.sechead h2 svg{width:17px;height:17px;color:#BDBDBD;flex:0 0 17px}
+.arrows{display:flex;gap:5px;align-items:center}
+.arrows button{width:24px;height:24px;border-radius:99px;background:#1A1A1A;border:0;color:#C9C9C9;font-size:13px;cursor:pointer;line-height:1}
+.all{font:600 11px Inter;color:#C9C9C9;background:#1A1A1A;border-radius:7px;padding:4px 10px;cursor:pointer;margin-right:4px}
+
+/* ---------- сетка игр ---------- */
+.grid{display:grid;grid-template-columns:repeat(9,1fr);gap:8px}
+.tile{cursor:pointer;border-radius:9px;overflow:hidden;background:#171717}
+.art{aspect-ratio:3/3.4;overflow:hidden}
+.art img{width:100%;height:100%;object-fit:cover;transition:transform .3s}
+.tile:hover .art img{transform:scale(1.05)}
+.tmeta{display:flex;align-items:center;gap:4px;font:500 8.5px Inter;color:#9A9A9A;padding:4px 0 2px}
+.tmeta i{width:4px;height:4px;border-radius:99px;background:#16C05C}
+
+/* ---------- турниры ---------- */
+.trn{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.tcard{position:relative;height:132px;border-radius:12px;overflow:hidden;background:#161616;cursor:pointer;padding:13px 15px;display:flex;flex-direction:column;text-decoration:none;color:inherit}
+.tc-art{position:absolute;right:0;top:0;height:100%;width:52%;object-fit:cover;opacity:.85;-webkit-mask-image:linear-gradient(90deg,transparent,#000 42%);mask-image:linear-gradient(90deg,transparent,#000 42%)}
+.tcard::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(22,22,22,.97) 26%,rgba(22,22,22,.6) 52%,rgba(22,22,22,.15) 78%)}
+.tc-badge{position:relative;z-index:2;align-self:flex-start;background:#16C05C;color:#04180C;font:700 9px Inter;padding:3px 8px;border-radius:6px;margin-bottom:auto}
+.tc-t{position:relative;z-index:2;font:500 11.5px Inter;color:#B9B9B9;margin-top:10px}
+.tc-v{position:relative;z-index:2;font:800 24px/1.1 Inter;letter-spacing:-.03em;margin:2px 0 8px}
+.tc-f{position:relative;z-index:2;font:400 8.5px Inter;color:#7E7E7E}
+.tc-cd{position:relative;z-index:2;font:700 11px Inter;color:#C9C9C9;letter-spacing:.14em}
+.tc-btn{position:absolute;z-index:3;right:12px;bottom:12px;background:#242424;color:#fff;font:600 10.5px Inter;padding:7px 13px;border-radius:8px}
