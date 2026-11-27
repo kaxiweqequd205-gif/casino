@@ -11,7 +11,7 @@ body{background:#0C0C0C;font-family:Inter,system-ui,sans-serif;-webkit-font-smoo
 svg{width:16px;height:16px;fill:none;stroke:currentcolor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
 
 /* ---------- шапка ---------- */
-.top{height:64px;flex:0 0 64px;display:flex;align-items:center;gap:14px;padding:0 20px 0 24px;border-bottom:1px solid #1A1A1A}
+.top{position:sticky;top:0;z-index:20;height:64px;flex:0 0 64px;display:flex;align-items:center;gap:14px;padding:0 20px 0 24px;border-bottom:1px solid #1A1A1A;background:#0C0C0C}
 .logo{display:flex;align-items:center;gap:9px}
 .m7{font:900 26px/1 Inter;letter-spacing:-.15em;transform:skewX(-9deg)}
 .m7 em{font-style:normal;color:#2F6BFF}
@@ -31,7 +31,7 @@ svg{width:16px;height:16px;fill:none;stroke:currentcolor;stroke-width:1.7;stroke
 .body{flex:1;display:flex;min-height:0}
 
 /* ---------- сайдбар ---------- */
-.side{position:sticky;top:10px;align-self:flex-start;width:236px;flex:0 0 236px;margin:10px 0 10px 10px;background:#141414;border-radius:12px;padding:12px 10px;display:flex;flex-direction:column;gap:1px}
+.side{position:sticky;top:74px;z-index:9;align-self:flex-start;width:236px;flex:0 0 236px;margin:10px 0 10px 10px;background:#141414;border-radius:12px;padding:12px 10px;display:flex;flex-direction:column;gap:1px}
 .acc{display:flex;align-items:center;gap:9px;padding:8px 8px 12px;border-bottom:1px solid #1E1E1E;margin-bottom:6px}
 .acc b{display:block;font:700 11.5px Inter}
 .acc small{font-size:9px;color:#6B6B6B}
